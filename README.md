@@ -95,11 +95,11 @@ Please use a private repo just email us when you are done.
 
 - In prepare config - I have named my table_name and source_table_name to "gb_github_challenge".
 
-- Create main.tf file in configs directory.
+- Created main.tf file in configs directory.
 
 - I'm a bit concerned regarding values for keys in configuration files - I left them blank due to lack of AWS value providers.
 
 - seed.yaml, glue_jobs.tf, main.tf and output.tf files left unupdated.
 
-- ### Python Script
+### Python Script
 (no python script attached - I tried doing this section from a perspective of someone who has not worked with AWS before. I did not want to reference anything from anywhere).

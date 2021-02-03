@@ -1,0 +1,59 @@
+{
+    "asset": {
+        "asset_domain": "github",
+        "asset_name": "github_prepare_pre",
+        "asset_stage": "dev",
+        "asset_subprod": "my_subprod",
+        "creator": "Thato Mokhemisa",
+        "email": "Thato.Mokhemisa@bmw.co.za"
+    },
+    "config_name": "prepare_pre",
+    "config_type": "prepare",
+    "etl_job": "dapfw-prepare-default",
+    "logging_lvl": "maximum",
+    "job_settings": {
+        "cron": "0 1 ? * TUE-SAT 3000"
+    },
+    "metric_namespace": "prepare_pre",
+    "num_rows_per_file": "1000000",
+    "partitions": [
+        "ingest_day"
+    ],
+    "source": {
+        "glue_input_db": "github_gb_src",
+        "s3_input_path": ""
+    },
+    "dpu_count": "2",
+    "pseudonymizer_parallelism": "20",
+    "pseudonymizer_settings": {
+        "api_key": "",
+        "endpoint": "",
+        "region": "eu-central-1",
+        "role": "",
+        "session_name": "prepare_pre"
+    },
+    "target": {
+        "aws_region": "eu-west-1",
+        "glue_output_db": "github_gb_pre",
+        "kms_key_arn": "",
+        "s3_output_path": "",
+        "target_role_arn": "",
+        "target_role_external_id": "id"
+    },
+    "table_config": [
+        {
+            "source_table_name": "gb_github_challenge",
+            "table_name": "gb_github_challenge",
+            "write_mode": "overwrite",
+            "columns": [
+                "id",
+                "f_name",
+                "age",
+                "created"
+            ],
+            "partitions": [
+                "ingest_day"
+            ]
+        }
+    ]
+}

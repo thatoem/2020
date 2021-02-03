@@ -1,0 +1,70 @@
+{
+  "asset": {
+    "asset_domain": "github",
+    "asset_name": "github_gb_src",
+    "asset_stage": "dev",
+    "asset_subprod": "my_subprod",
+    "creator": "Thato Mokhemisa",
+    "email": "Thato.Mokhemisa@bmw.co.za"
+  },
+  "config_name": "gb_github",
+  "config_type": "spark_ingest",
+  "dpu_count": "2",
+  "etl_job": "files-spark-ingest-default",
+  "job_settings": {
+    "cron": "0 1 ? * TUE-SAT 3000"
+  },
+  "logging_lvl": "maximum",
+  "num_rows_per_file": "1000000",
+  "pseudonymizer_parallelism": "20",
+  "pseudonymizer_settings": {
+    "api_key": "",
+    "endpoint": "",
+    "region": "eu-central-1",
+    "role": "",
+    "session_name": "gb_github_ch"
+  },
+  "table_config": [
+    {
+      "columns": [
+        {
+          "name": "id",
+          "type": "number"
+        },
+        {
+          "name": "f_name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "number"
+        },
+        {
+          "name": "created",
+          "type": "timestamp",
+          "timestamp_mask": "%Y-%m-%d"
+        }
+      ],
+      "delimiter": ";",
+      "header":"true",
+      "infer_schema": "false",
+      "table_name": ""
+    }
+  ],
+  "target": {
+    "aws_region": "eu-west-1",
+    "glue_output_db": "github_gb_src",
+    "kms_key_arn": "",
+    "raw_s3_output_path": "",
+    "s3_output_path": "",
+    "target_role_arn": "",
+    "target_role_external_id": "id"
+  },
+  "run_next": [
+    {
+      "config_name": "prepare_pre",
+      "config_type": "prepare",
+      "step_function_name": "default_parallel_5"
+    }
+  ]
+}
