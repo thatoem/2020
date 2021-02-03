@@ -54,8 +54,52 @@ ___
 Please use a private repo just email us when you are done. 
 
 ### My Solution 
-Use this area to describe your solution as requested in *_Section B_*. 
+
+*_Section B_*
+
+1.	*AWS CloudFormation*: Step 1: Managing a template model of our data ingestion architecture.
+
+2.	*AWS CodeBuild*: run codebuild to compile our code and run test to check configurations.
+
+3.	*DynamoDB*: after running CodeBuild, under tables and items, you check if configured table has been created.
+
+4.	*AWS Glue Job*: run the glue job after verifying a table has been created in DynamoDB from code build.
+
+5.	*Amazon S3 Raw Bucket*: refresh bucket to see if raw data has been uploaded.
+
+6.	*AWS Step Functions*: run initial step functions with ingest configuration script to upload data into the right table.
+
+7.	*Amazon CloudWatch*: after kicking off step functions, check the logs to see what is happening in the background and monitor if the process is running into errors or not.
+
+8.	*Amazon S3 Source Bucket*: after cloudwatch process, refresh bucket to see if processed data has been uploaded.
+
+9.	*AWS Glue Job*: run glue job to process and write data from source to your target.
+
+10.	*Amazon S3 Target Bucket*: refresh bucket to see data in final form.
 
 
 ### Additional Comments / Information / Concerns
-Add info here.
+- Data Ingest Diagram saved in media directory.
+
+- I only have 2 config files - spark_ingest and prepare.
+
+- I have renamed my config_name to "gb_github".
+
+- I have renamed my sources to "github_gb_src".
+
+- I have renamed session_name to "gb_github_ch" - ch for challenge.
+
+- My etl job is named "files-spark-ingest-default".
+
+- My table_config is a made up table.
+
+- In prepare config - I have named my table_name and source_table_name to "gb_github_challenge".
+
+- Create main.tf file in configs directory.
+
+- I'm a bit concerned regarding values for keys in configuration files - I left them blank due to lack of AWS value providers.
+
+- seed.yaml, glue_jobs.tf, main.tf and output.tf files left unupdated.
+
+- ### Python Script
+(no python script attached - I tried doing this section from a perspective of someone who has not worked with AWS before. I did not want to reference anything from anywhere).
